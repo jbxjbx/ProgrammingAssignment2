@@ -1,7 +1,6 @@
 ## This code is designed to make the matrix inversion by caching 
 
-## The first function is used to create a list containing a function to make the value, 
-## get the value and then return the inverse by values.
+## The first function is used to create the matrix object which can be cached the inverse later.
 
 makeCacheMatrix <- function(x = matrix()) {
 inv <- NULL
@@ -12,11 +11,16 @@ inv <- NULL
     get <- function() x
     setinverse <- function(inverse) inv <<- inverse
     getinverse <- function() inv
-    list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
+    list(set=set, 
+    get=get, 
+    setinverse=setinverse, 
+    getinverse=getinverse)
 }
 
 
-## Write a short comment describing this function
+## Thsi is the function return the value we got from the previous function and then calculate the inverse.
+## And then output the inverse and return. 
+## If the inverse has already been calculated, then it should retrieve the inverse from the cache.
 
 cacheSolve <- function(x, ...) {
        inv <- x$getinverse()
